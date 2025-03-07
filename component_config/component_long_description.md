@@ -1,0 +1,1 @@
+Google Play Console long description

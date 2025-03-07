@@ -1,0 +1,1 @@
+https://github.com/keboola/component-google-play-console/blob/master/LICENSE.md
