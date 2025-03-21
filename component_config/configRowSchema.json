@@ -1,1 +1,34 @@
-{}
+{
+  "type": "object",
+  "title": "Component configuration",
+  "required": [
+    "bucket_id"
+  ],
+  "properties": {
+    "bucket_id": {
+      "type": "string",
+      "title": "Bucket ID Name",
+      "description": "Insert the id of the bucket.",
+      "propertyOrder": 1
+    },
+    "report": {
+      "enum": [
+        "reviews",
+        "statistics",
+        "financial"
+      ],
+      "type": "string",
+      "title": "Report to download",
+      "default": "reviews",
+      "options": {
+        "enum_titles": [
+          "Reviews",
+          "Statistics",
+          "Financial"
+        ]
+      },
+      "required": true,
+      "propertyOrder": 2
+    }
+  }
+}
