@@ -1,0 +1,66 @@
+{
+  "earnings": {
+    "is_zipped": true
+  },
+  "sales": {
+    "is_zipped": true
+  },
+  "play_balance_krw": {
+    "is_zipped": true
+  },
+  "reviews": {
+    "encoding": "utf-16-le"
+  },
+  "financial-stats/subscriptions": {
+    "encoding": "utf-16-le"
+  },
+  "stats/installs": {
+    "encoding": "utf-16-le",
+    "subreports": [
+      "*_app_version",
+      "*_carrier",
+      "*_country",
+      "*_device",
+      "*_language",
+      "*_os_version",
+      "*_overview"
+    ]
+  },
+  "stats/crashes": {
+    "encoding": "utf-16-le",
+    "subreports": [
+      "*_app_version",
+      "*_device",
+      "*_os_version",
+      "*_overview"
+    ]
+  },
+  "stats/promotional_content": {
+    "encoding": "utf-16-le",
+    "subreports": [
+      "*_overview",
+      "*_promotional_content_id"
+    ]
+  },
+  "stats/ratings": {
+    "encoding": "utf-16-le",
+    "subreports": [
+      "*_app_version",
+      "*_carrier",
+      "*_country",
+      "*_device",
+      "*_language",
+      "*_os_version",
+      "*_overview"
+    ]
+  },
+  "stats/store_performance": {
+    "encoding": "utf-16-le",
+    "subreports": [
+      "store_performance_is*_country",
+      "store_performance_is*_traffic_source",
+      "total_store_performance_is*_country",
+      "total_store_performance_is*_traffic_source"
+    ]
+  }
+}

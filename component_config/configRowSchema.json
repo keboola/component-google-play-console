@@ -1,1 +1,40 @@
-{}
+{
+  "type": "object",
+  "title": "Component configuration",
+  "required": [
+    "bucket_id"
+  ],
+  "properties": {
+    "bucket_id": {
+      "type": "string",
+      "title": "Bucket ID Name",
+      "description": "Insert the id of the bucket.",
+      "propertyOrder": 1
+    },
+    "endpoint": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "earnings",
+          "sales",
+          "play_balance_krw",
+          "reviews",
+          "financial-stats/subscriptions",
+          "stats/installs",
+          "stats/crashes",
+          "stats/promotional_content",
+          "stats/ratings",
+          "stats/store_performance"
+        ],
+        "type": "string"
+      },
+      "title": "Endpoints",
+      "format": "select",
+      "default": [
+      ],
+      "description": "Report to download",
+      "uniqueItems": true,
+      "propertyOrder": 2
+    }
+  }
+}

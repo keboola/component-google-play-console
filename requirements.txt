@@ -4,3 +4,6 @@ keboola.http-client
 freezegun
 mock
 pydantic
+google-auth-oauthlib
+google-cloud-storage
+duckdb
