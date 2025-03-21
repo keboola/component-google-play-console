@@ -34,12 +34,11 @@ class Component(ComponentBase):
 
         params = Configuration(**self.configuration.parameters)
 
-        logging.info(f"Config initialized.")
+        logging.info("Config initialized.")
 
         client = CloudStorageClient(params.gcp_service_account_key)
 
-        logging.info(f"Client initialized.")
-
+        logging.info("Client initialized.")
 
         path = os.path.join(self.data_folder_path, "artifacts", "out", "current")
 
@@ -47,7 +46,7 @@ class Component(ComponentBase):
 
         client.download_files_from_bucket(params.bucket_id, path)
 
-        logging.info(f"Downloading files from bucket.")
+        logging.info("Downloading files from bucket.")
 
 
 """
