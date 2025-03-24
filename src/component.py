@@ -41,7 +41,6 @@ class Component(ComponentBase):
         self.params = Configuration(**self.configuration.parameters)
         self.mapping = None
 
-
     def run(self):
 
         date_from = self._get_date_from()
