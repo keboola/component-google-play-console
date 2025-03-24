@@ -35,6 +35,48 @@
       "description": "Report to download",
       "uniqueItems": true,
       "propertyOrder": 2
+    },
+    "date_from": {
+      "type": "string",
+      "title": "Fetch From Date",
+      "default": "yesterday",
+      "description": "Date in YYYY-MM-DD format. You can also set this as `last run`, which will fetch data from the last run of the component; if no previous successful run exists, all data since 2024-01-01 will be downloaded.",
+      "propertyOrder": 3
+    },
+    "destination": {
+      "type": "object",
+      "title": "Destination",
+      "required": [
+        "load_type"
+      ],
+      "properties": {
+        "load_type": {
+          "enum": [
+            "incremental_load",
+            "full_load"
+          ],
+          "type": "string",
+          "title": "Load Type",
+          "default": "incremental_load",
+          "options": {
+            "enum_titles": [
+              "Incremental Load",
+              "Full Load"
+            ]
+          },
+          "description": "If Full load is used, the destination table will be overwritten every run. If Incremental Load is used, data will be appended instead.",
+          "propertyOrder": 41
+        }
+      },
+      "propertyOrder": 4
+    },
+    "debug": {
+      "type": "boolean",
+      "title": "Debug mode",
+      "format": "checkbox",
+      "default": false,
+      "description": "If enabled, the component will produce detailed logs",
+      "propertyOrder": 5
     }
   }
 }

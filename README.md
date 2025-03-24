@@ -1,19 +1,28 @@
 Google Play Console
 =============
 
-Description
+This component extracts various reports from the Google Play Console API, supporting both full and incremental data loading with configurable date ranges.
 
-**Table of Contents:**
+## Prerequisites
 
-[TOC]
+To use this component, you need:
 
-Functionality Notes
-===================
+1. **Google Cloud Platform Service Account**
+   - Create a service account with access to Google Play Console API: [Create Service Account](https://cloud.google.com/iam/docs/service-accounts-create#console)
+   - Generate a service account key in JSON format: [Create Service Account Key](https://cloud.google.com/iam/docs/keys-create-delete#console)
 
-Prerequisites
-=============
+2. **Google Play Console Access**
+   - In Google Play Console, navigate to "Users and permissions"
+   - Click "Invite new users" and enter the service account email address
+   - Grant the following permissions:
+     - "View app information and download bulk reports (read-only)"
+     - "View financial data, orders, and cancellation survey responses"
+   - Click "Invite User"
 
-Ensure you have the necessary API token, register the application, etc.
+3. **Google Cloud Storage Bucket ID**
+   - In Google Play Console, navigate to "Download reports"
+   - Select any report and click "Copy Cloud Storage URI"
+   - From the URI `gs://name_of_your_bucket_123456789/earnings/`, extract only the bucket name: `name_of_your_bucket_123456789`
 
 Features
 ========
@@ -22,27 +31,35 @@ Features
 |-------------------------|-----------------------------------------------|
 | Generic UI Form         | Dynamic UI form for easy configuration.       |
 | Row-Based Configuration | Allows structuring the configuration in rows. |
-| OAuth                   | OAuth authentication enabled.                 |
 | Incremental Loading     | Fetch data in new increments.                 |
-| Backfill Mode           | Supports seamless backfill setup.             |
 | Date Range Filter       | Specify the date range for data retrieval.    |
 
 Supported Endpoints
 ===================
 
-If you need additional endpoints, please submit your request to
-[ideas.keboola.com](https://ideas.keboola.com/).
+The component currently supports the following Google Play Console reports:
+- earnings
+- sales
+- play_balance_krw
+- reviews
+- financial-stats/subscriptions
+- stats/installs
+- stats/crashes
+- stats/promotional_content
+- stats/ratings
+- stats/store_performance
+
+Need additional endpoints? Submit your request to [ideas.keboola.com](https://ideas.keboola.com/).
 
 Configuration
 =============
+At the configuration component level, insert the contents of the service account’s JSON key.
+At the row level configuration, specify the following parameters:
+- Bucket ID
+- Report Type
+- Date Range
+- Incremental Loading
 
-Param 1
--------
-Details about parameter 1.
-
-Param 2
--------
-Details about parameter 2.
 
 Output
 ======
@@ -55,9 +72,9 @@ Development
 To customize the local data folder path, replace the `CUSTOM_FOLDER` placeholder with your desired path in the `docker-compose.yml` file:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    volumes:
-      - ./:/code
-      - ./CUSTOM_FOLDER:/data
+volumes:
+  - ./:/code
+  - ./CUSTOM_FOLDER:/data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Clone this repository, initialize the workspace, and run the component using the following

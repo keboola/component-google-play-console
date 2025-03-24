@@ -106,7 +106,7 @@ class Component(ComponentBase):
 
     def _get_date_from(self) -> datetime:
         if self.params.date_from == "last_run" and not self.state.get("last_run"):
-            date_from = datetime.strptime(self.params.date_from, "%Y-%m-%d")
+            date_from = datetime.strptime("2024-01-01", "%Y-%m-%d")
         elif self.params.date_from == "last_run":
             date_from = datetime.fromtimestamp(self.state.get("last_run"))
         else:
