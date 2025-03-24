@@ -11,7 +11,7 @@
       "description": "Insert the id of the bucket.",
       "propertyOrder": 1
     },
-    "endpoint": {
+    "reports": {
       "type": "array",
       "items": {
         "enum": [
@@ -28,7 +28,7 @@
         ],
         "type": "string"
       },
-      "title": "Endpoints",
+      "title": "Reports",
       "format": "select",
       "default": [
       ],
@@ -39,8 +39,8 @@
     "date_from": {
       "type": "string",
       "title": "Fetch From Date",
-      "default": "yesterday",
-      "description": "Date in YYYY-MM-DD format. You can also set this as `last run`, which will fetch data from the last run of the component; if no previous successful run exists, all data since 2024-01-01 will be downloaded.",
+      "default": "last_run",
+      "description": "Date in YYYY-MM-DD format. You can also set this as `last_run`, which will fetch data from the last run of the component; if no previous successful run exists, all data since 2024-01-01 will be downloaded.",
       "propertyOrder": 3
     },
     "destination": {

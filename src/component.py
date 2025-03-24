@@ -42,16 +42,23 @@ class Component(ComponentBase):
         self.mapping = None
 
     def run(self):
-
         date_from = self._get_date_from()
         self.state["last_run"] = datetime.now().timestamp()
 
         client = CloudStorageClient(self.params.gcp_service_account_key)
 
+        logging.info(f"Downloading files from bucket {self.params.bucket_id}")
+
         client.download_files_from_bucket(FILES_TEMP_DIR, date_from, self.params.bucket_id)
 
-        with open("mapping.json", "r") as f:
-            self.mapping = json.load(f)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        mapping_paths = [os.path.join(current_dir, "mapping.json"), "/code/src/mapping.json"]
+
+        for mapping_path in mapping_paths:
+            if os.path.exists(mapping_path):
+                with open(mapping_path, "r") as f:
+                    self.mapping = json.load(f)
+                    break
 
         for report in self.params.reports:
             self.process_report(report)
@@ -59,6 +66,7 @@ class Component(ComponentBase):
         self.write_state_file(self.state)
 
     def process_report(self, report_name):
+        logging.info(f"Processing report {report_name}")
         path = os.path.join(FILES_TEMP_DIR, report_name)
         report_config = self.mapping.get(report_name)
 
